@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/",[
+    "as" => "web.index",
+    "uses" => "WebController@index"
+]);
+
+Route::get("/formulario",[
+    "as" => "web.formulario",
+    "uses" => "WebController@formulario"
+]);
+
+Route::get("/galeria",[
+    "as" => "web.galeria",
+    "uses" => "WebController@galeria"
+]);
