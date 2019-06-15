@@ -8,7 +8,7 @@
 
             <!-- foreach para que recorra el array de fotos-->
 
-            @foreach(\Clases\Filesystem::getAll($carpeta) as $numcarousel):
+            @foreach( as $numcarousel):
             <li data-target="#carouselIndicators" data-slide-to="<?= $numcarousel ?>" class="bordeamarillo<?php if($numcarousel == 1) echo " active"; ?>"></li>
             @endforeach;
 

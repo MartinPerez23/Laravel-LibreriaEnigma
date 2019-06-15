@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',"last_name","comentario",'email','genero_favorito',"habilitado","admin"
     ];
 
     /**
@@ -26,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    // accesors
+
+    public function getUserNameAttribute(){
+        return $this->attributes["user"] ? $this->attributes["user"] : $this->attributes["email"];
+    }
+
+
+    // mutator
+    public function setUserAttribute($val){
+        $this->attributes["user"] = strtoupper($val);
+    }
+
 }
