@@ -31,9 +31,5 @@ class WebController extends Controller
         return view("web.galeria",compact("libros"));
     }
 
-    public function panel(){
 
-        return view("web.panel.index");
-
-    }
 }

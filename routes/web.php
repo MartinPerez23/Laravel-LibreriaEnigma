@@ -40,7 +40,7 @@ Route::group(["prefix" => "panel"],function (){
 
     Route::get("/", [
         "as" => "panel.index",
-        "uses" => "WebController@panel"
+        "uses" => "PanelController@index"
     ]);
 
 
@@ -80,6 +80,52 @@ Route::group(["prefix" => "panel"],function (){
             "uses" => "LibrosController@destroy"
         ]);
 
+
+    });
+    Route::group(["prefix" => "carousel"],function (){
+
+        Route::get("/",[
+            "as" => "carousel.index",
+            "uses" => "CarouselController@index"
+        ]);
+
+
+        Route::get("/create",[
+            "as" => "carousel.create",
+            "uses" => "CarouselController@create"
+        ]);
+
+
+        Route::post("/store",[
+            "as" => "carousel.store",
+            "uses" => "CarouselController@store"
+        ]);
+
+
+        Route::get("/{id}/edit",[
+            "as" => "carousel.edit",
+            "uses" => "CarouselController@edit"
+        ]);
+
+
+        Route::put("/{id}/update",[
+            "as" => "carousel.update",
+            "uses" => "CarouselController@update"
+        ]);
+
+        Route::delete("/{id}/destroy",[
+            "as" => "carousel.destroy",
+            "uses" => "CarouselController@destroy"
+        ]);
+
+    });
+
+    Route::group(["prefix" => "usuarios"],function (){
+
+        Route::get("/",[
+            "as" => "usuarios.index",
+            "uses" => "UsersController@index"
+        ]);
 
     });
 

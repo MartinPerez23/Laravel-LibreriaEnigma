@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -24,6 +25,22 @@ class User extends Authenticatable
 
     public function setUserAttribute($val){
         $this->attributes["user"] = strtoupper($val);
+    }
+
+    public function getHabilitadoAttribute(){
+        return $this->attributes["habilitado"] ?  "Si" : "No";
+    }
+
+    public function getAdminAttribute(){
+        return $this->attributes["admin"] ?  "Si" : "No";
+    }
+
+    public function getGeneroFavoritoAttribute($id){
+        $query = DB::table('users')->where('id',$id)->first()->genero_favorito;
+
+        $gene = unserialize($query);
+
+        return $gene;
     }
 
 }

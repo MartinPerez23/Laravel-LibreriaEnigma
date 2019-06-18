@@ -7,7 +7,17 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-        public function store(Request $request)
+
+    public function index(User $usuarios)
+    {
+        $usuarios = $usuarios->paginate(10);
+
+
+        return view("panel.usuarios.index")->with("usuarios",$usuarios);
+
+    }
+
+    public function store(Request $request)
     {
 
         $validaciones = [

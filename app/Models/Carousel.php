@@ -12,4 +12,7 @@ class carousel extends Model
 
     protected $fillable = ["imagen","habilitado"];
 
+    public function getHabilitadoAttribute(){
+        return $this->attributes["habilitado"] ?  "Si" : "No";
+    }
 }

@@ -9,7 +9,8 @@
             <!-- foreach para que recorra el array de fotos-->
 
             @foreach($carousel as $ca)
-            <li data-target="#carouselIndicators" data-slide-to="{{$ca->id}}" class="bordeamarillo @if($ca->id == 1) {{'active'}} @endif "></li>
+                <li data-target="#carouselIndicators" data-slide-to="{{$ca->id}}" class="bordeamarillo @if($ca == array_first($carousel)) {{'active'}} @endif "></li>
+
             @endforeach
 
 
@@ -18,9 +19,10 @@
 
             <!-- otro foreach para que recorra el array de fotos-->
             @foreach($carousel as $ca)
-                <div class="carousel-item @if($ca->id == 1)  {{'active'}} @endif">
+                <div class="carousel-item @if($ca == array_first($carousel))  {{'active'}} @endif">
                     <img class="d-block w-100" src="{{$ca->imagen}}" alt="{{$ca->id}}">
                 </div>
+
             @endforeach
 
         </div>
@@ -48,17 +50,15 @@
             <div class="col-8">
                 <h3>Bienvenido</h3>
 
-                <!-- pone la funcion visitantes -->
-
                 <p class="parrafos">Hola, queriamos agradecer tu visita con un descuento del 10% solo por comprar por la pagina oficial de la mejor librería de Argentina.</p>
             </div>
             <div class="col-12 col-md-4">
-                <a href="img/1.jpg"><img src="img/1.jpg" alt="libros" class="img-fluid"></a>
+                <a href="img/1.jpg" class="fancy_box" rel="main"><img src="img/1.jpg" alt="libros" class="img-fluid"></a>
             </div>
         </div>
         <div class="row">
             <div class="col-12 col-md-4">
-                <a href="img/2.jpg"><img src="img/2.jpg" alt="libros" class="img-fluid"></a>
+                <a href="img/2.jpg" class="fancy_box" rel="main"><img src="img/2.jpg" alt="libros" class="img-fluid"></a>
             </div>
             <div class="col-12 col-md-8">
                 <h3>Nuestros servicios</h3>
@@ -71,7 +71,7 @@
                 <p class="parrafos">La librería tiene un formulario que si lo llena, le mandaremos todo tipo de noticias acerca de su genero literario favorito!!</p>
             </div>
             <div class="col-12 col-md-4">
-                <a href="img/3.jpg"><img src="img/3.jpg" alt="libros" class="img-fluid"></a>
+                <a href="img/3.jpg" class="fancy_box" rel="main"><img src="img/3.jpg" alt="libros" class="img-fluid"></a>
             </div>
         </div>
 
