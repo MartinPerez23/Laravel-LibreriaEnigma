@@ -3,36 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\autor;
+use App\Models\carousel;
 use App\Models\editorial;
 use App\Models\libro;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
 
-    public function index(){
-        return view("web.index");
+    public function index(carousel $carousel){
+        $carousel = $carousel->all();
+        return view("web.index", compact("carousel"));
     }
 
-
     public function formulario(){
+
         return view("web.formulario");
 
     }
 
+     public function galeria(libro $libro){
 
-    public function galeria(Autor $autor, Editorial $editorial, Libro $libro){
-        /*
-         Cuando me traigo todo un modelo, tengo una forma de pedirle que me traiga tambien sus relaciones (si las voy a usar, es lo más optimo)
+        $libros = $libro->with("Autor", "Editorial")->get();
+        $libros= $libros->all();
 
-        Con el método ->with("relaciones") del modelo ->get()
-         */
-        $libro = $libro->with("Autor", "Editorial")->get();
+        return view("web.galeria",compact("libros"));
+    }
 
-        dd($libro);
-//        $tipoHabitaciones = [];
+    public function panel(){
 
-        // devolvemos la vista con los tipoHabitaciones
-        return view("web.habitaciones",compact("tipoHabitaciones"));
+        return view("web.panel.index");
+
     }
 }

@@ -14,7 +14,7 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('last_name',100)->nullable();
+            $table->string('apellido',100)->nullable();
             $table->string('comentario',200)->nullable();
             $table->string('genero_favorito',300);
             $table->boolean('habilitado')->default(1);
@@ -30,7 +30,7 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn("last_name");
+            $table->dropColumn("apellido");
             $table->dropColumn("comentario");
             $table->dropColumn("genero_favorito");
             $table->dropColumn("habilitado");

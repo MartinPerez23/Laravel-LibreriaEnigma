@@ -11,4 +11,8 @@ class editorial extends Model
     protected $primaryKey = "id";
 
     protected $fillable = ["nombre"];
+
+    public function Libros(){
+        return $this->hasMany(libro::class,"id_editorial");
+    }
 }

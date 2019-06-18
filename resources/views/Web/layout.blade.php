@@ -23,17 +23,36 @@
         "Formulario" => "web.formulario",
         "Galeria" => "web.galeria"
     ];
+
 @endphp
 
 @include("web.partials.header",["secciones" => $navbar])
-<!-- ##### Header Area End ##### -->
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
+@if (Session::has("ok"))
+    <div class="alert alert-success">
+        <ul>
+
+            <li>{{ session("ok") }}</li>
+
+        </ul>
+    </div>
+@endif
 
 
 {{-- CONTENIDO --}}
 
 @yield("contenido")
-
-
 
 @include("web.partials.footer")
 

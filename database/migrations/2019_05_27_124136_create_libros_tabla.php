@@ -22,8 +22,8 @@ class CreateLibrosTabla extends Migration
             $table->unsignedInteger("id_editorial");
             $table->boolean('habilitado')->default(1);
 
-            $table->foreign("id_autor")->references("id")->on("autor")->onUpdate("cascade")->onDelete("no action");
-            $table->foreign("id_editorial")->references("id")->on("editorial")->onUpdate("cascade")->onDelete("no action");
+            $table->foreign("id_autor")->references("id")->on("autores")->onUpdate("cascade")->onDelete("no action");
+            $table->foreign("id_editorial")->references("id")->on("editoriales")->onUpdate("cascade")->onDelete("no action");
 
             $table->timestamps();
         });

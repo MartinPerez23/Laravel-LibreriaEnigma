@@ -12,9 +12,10 @@ class LibrosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(libro $libro)
     {
-        //
+        $libros = $libro->paginate(8);
+        return view("web.galeria")->with("libros",$libros);
     }
 
     /**

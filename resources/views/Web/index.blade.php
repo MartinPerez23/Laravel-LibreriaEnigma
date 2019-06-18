@@ -1,41 +1,34 @@
 @extends("web.layout")
 
-
 @section("contenido")
+
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 
         <ol class="carousel-indicators">
 
             <!-- foreach para que recorra el array de fotos-->
 
-            @foreach( as $numcarousel):
-            <li data-target="#carouselIndicators" data-slide-to="<?= $numcarousel ?>" class="bordeamarillo<?php if($numcarousel == 1) echo " active"; ?>"></li>
-            @endforeach;
+            @foreach($carousel as $ca)
+            <li data-target="#carouselIndicators" data-slide-to="{{$ca->id}}" class="bordeamarillo @if($ca->id == 1) {{'active'}} @endif "></li>
+            @endforeach
 
 
         </ol>
         <div class="carousel-inner">
 
             <!-- otro foreach para que recorra el array de fotos-->
-
-            <?php
-            foreach(\Clases\Filesystem::getAll($carpeta) as $carrousel):
-            ?>
-
-            <div class="carousel-item<?php if($carrousel == 1) echo " active"; ?>">
-                <img class="d-block w-100" src="<?= count(glob("$carpeta/$carrousel/$carrousel.*")) > 0 ? glob("$carpeta/$carrousel/$carrousel.*")[0] : "img/icono.png" ?>" alt="<?= $carrousel ?>">
-            </div>
-
-            <?php
-            endforeach;
-            ?>
+            @foreach($carousel as $ca)
+                <div class="carousel-item @if($ca->id == 1)  {{'active'}} @endif">
+                    <img class="d-block w-100" src="{{$ca->imagen}}" alt="{{$ca->id}}">
+                </div>
+            @endforeach
 
         </div>
-        <a class="carousel-control-prev bg-warning" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev bg-warning" href="#carouselIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only bg-warning">Previous</span>
         </a>
-        <a class="carousel-control-next bg-warning" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next bg-warning" href="#carouselIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -75,7 +68,7 @@
         <div class="row">
             <div class="col-12 col-md-8">
                 <h3>¿Le interesaría saber acerca de sus libros favoritos?</h3>
-                <p class="parrafos">La librería tiene <a href="index.php?seccion=formulario">este formulario</a>, si lo llena, le mandaremos todo tipo de noticias acerca de su genero literario favorito!!</p>
+                <p class="parrafos">La librería tiene un formulario que si lo llena, le mandaremos todo tipo de noticias acerca de su genero literario favorito!!</p>
             </div>
             <div class="col-12 col-md-4">
                 <a href="img/3.jpg"><img src="img/3.jpg" alt="libros" class="img-fluid"></a>

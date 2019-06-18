@@ -12,11 +12,11 @@ class CarouselSeeder extends Seeder
     public function run()
     {
         DB::table("carousel")->insert([
-            ["imagen"   => ""],
-            ["imagen"   => ""],
-            ["imagen"   => ""],
-            ["imagen"   => ""],
-            ["imagen"   => ""]]
+            ["imagen"   => "img/carousel/1.jpg"],
+            ["imagen"   => "img/carousel/2.jpg"],
+            ["imagen"   => "img/carousel/3.jpg"],
+            ["imagen"   => "img/carousel/4.jpg"],
+            ["imagen"   => "img/carousel/5.jpg"]]
         );
     }
 }
