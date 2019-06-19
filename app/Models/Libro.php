@@ -18,5 +18,8 @@ class libro extends Model
     public function Editorial(){
         return $this->belongsTo(editorial::class,"id_editorial");
     }
+    public function getHabilitadoAttribute(){
+        return $this->attributes["habilitado"] ?  "Si" : "No";
+    }
 
 }

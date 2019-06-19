@@ -9,8 +9,9 @@
             <!-- foreach para que recorra el array de fotos-->
 
             @foreach($carousel as $ca)
-                <li data-target="#carouselIndicators" data-slide-to="{{$ca->id}}" class="bordeamarillo @if($ca == array_first($carousel)) {{'active'}} @endif "></li>
-
+                @if($ca->habilitado == "Si")
+                    <li data-target="#carouselIndicators" data-slide-to="{{$ca->id}}" class="bordeamarillo @if($ca == array_first($carousel)) {{'active'}} @endif "></li>
+                @endif
             @endforeach
 
 
@@ -19,10 +20,11 @@
 
             <!-- otro foreach para que recorra el array de fotos-->
             @foreach($carousel as $ca)
-                <div class="carousel-item @if($ca == array_first($carousel))  {{'active'}} @endif">
-                    <img class="d-block w-100" src="{{$ca->imagen}}" alt="{{$ca->id}}">
-                </div>
-
+                @if($ca->habilitado == "Si")
+                    <div class="carousel-item @if($ca == array_first($carousel))  {{'active'}} @endif">
+                        <img class="d-block w-100" src="{{$ca->imagen}}" alt="{{$ca->id}}">
+                    </div>
+                @endif
             @endforeach
 
         </div>

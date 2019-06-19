@@ -10,7 +10,7 @@ class CarouselController extends Controller
 {
     public function index(carousel $carousel)
     {
-        $carousel = $carousel->paginate(6);
+        $carousel = $carousel->paginate(5);
 
         return view("panel.carousel.index")->with("carousel",$carousel);
     }

@@ -84,6 +84,16 @@
                                 </div>
                             @endisset
                     </div>
+                    <div class="form-check form-check-inline mt-4">
+                        <input class="form-check-input" type="radio" name="habilitado" id="habilitada" value="1"
+                               @if(isset($libro) && $libro->habilitado == "Si") checked @endif>
+                        <label class="form-check-label" for="habilitada">Habilitada</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="habilitado" id="habilitada" value="0"
+                               @if(isset($libro) && $libro->habilitado == "No") checked @endif>
+                        <label class="form-check-label" for="habilitada">Deshabilitada</label>
+                    </div>
                     @if(isset($libro))
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary">Editar Libro</button>

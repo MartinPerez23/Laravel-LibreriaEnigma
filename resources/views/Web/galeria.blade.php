@@ -7,7 +7,7 @@
 
         @foreach ($libros as $libro)
 
-            @if ($libro->habilitado ==1)
+            @if ($libro->habilitado == "Si")
 
                 <div class="col-12 col-md-3 my-3">
                     <div class="card-deck">

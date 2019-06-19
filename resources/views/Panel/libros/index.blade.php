@@ -17,6 +17,7 @@
                         <th>Autor</th>
                         <th>Editorial</th>
                         <th>Imagen</th>
+                        <th>Habilitado</th>
                         <th>Acciones</th>
                     </tr>
                     </thead>
@@ -37,8 +38,13 @@
                         <td>
                             {{$libro->Editorial()->first()->nombre}}
                         </td>
-                        <td><img src="{{$libro->imagen}}" alt="{{$libro->nombre}}" width="50"></td>
-
+                        <td>
+                            <img src="{{$libro->imagen}}" alt="{{$libro->nombre}}" width="50">
+                        </td>
+                        <td>
+                            <p @if ($libro->habilitado == "Si") class="text-success" @else class="text-danger" @endif>
+                                {{$libro->getHabilitadoAttribute()}}</p>
+                        </td>
                         <!-- botones para borrar o editar -->
 
                         <td>

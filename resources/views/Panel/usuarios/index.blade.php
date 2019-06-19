@@ -48,12 +48,12 @@
                             </ul>
                         </td>
                         <td>
-                            <p @if ($user->habilitado == 0) class="text-success" @else class="text-danger" @endif>
+                            <p @if ($user->habilitado == "Si") class="text-success" @else class="text-danger" @endif>
                                 {{$user->getHabilitadoAttribute()}}
                             </p>
                         </td>
                         <td>
-                            <p @if ($user->admin == 0) class="text-success" @else class="text-danger" @endif>
+                            <p @if ($user->admin == "Si") class="text-success" @else class="text-danger" @endif>
                                 {{$user->getAdminAttribute()}}
                             </p>
                         </td>

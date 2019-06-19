@@ -16,7 +16,7 @@
                     <thead>
                     <tr>
                         <th>Imagen</th>
-                        <th>Habilitada</th>
+                        <th>Habilitado</th>
                         <th>Acciones</th>
                     </tr>
                     </thead>
@@ -27,8 +27,10 @@
                     <!-- datos en la tabla -->
 
                     <tr>
+
+
                         <td><img src="{{$img->imagen}}" alt="{{$img->id}}" width="250"></td>
-                        <td><p @if ($img->habilitado == 1) class="text-success" @else class="text-danger" @endif>
+                        <td><p @if ($img->habilitado == "Si") class="text-success" @else class="text-danger" @endif>
                                 {{$img->getHabilitadoAttribute()}}</p></td>
                         <!-- botones para borrar o editar -->
                         <td>
