@@ -10,7 +10,7 @@ class UsersController extends Controller
 
     public function index(User $usuarios)
     {
-        $usuarios = $usuarios->paginate(10);
+        $usuarios = $usuarios->paginate(8);
 
 
         return view("panel.usuarios.index")->with("usuarios",$usuarios);

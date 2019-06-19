@@ -48,10 +48,14 @@
                             </ul>
                         </td>
                         <td>
-                            {{$user->getHabilitadoAttribute()}}
+                            <p @if ($user->habilitado == 0) class="text-success" @else class="text-danger" @endif>
+                                {{$user->getHabilitadoAttribute()}}
+                            </p>
                         </td>
                         <td>
-                            {{$user->getAdminAttribute()}}
+                            <p @if ($user->admin == 0) class="text-success" @else class="text-danger" @endif>
+                                {{$user->getAdminAttribute()}}
+                            </p>
                         </td>
                     </tr>
 
@@ -63,7 +67,11 @@
 
             </div>
         </div>
-
+        <div class="row my-4 justify-content-center">
+            <div class="col-auto">
+                {{ $usuarios->links("") }}
+            </div>
+        </div>
     </div>
 
 @endsection

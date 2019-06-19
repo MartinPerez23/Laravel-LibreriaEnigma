@@ -45,7 +45,16 @@
                                     </div>
                                 </div>
                             @endisset
-
+                    <div class="form-check form-check-inline mt-4">
+                        <input class="form-check-input" type="radio" name="habilitado" id="habilitada" value="1"
+                               @if(isset($carousel) && $carousel->habilitado == 1) checked @endif>
+                        <label class="form-check-label" for="habilitada">Habilitada</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="habilitado" id="habilitada" value="0"
+                               @if(isset($carousel) && $carousel->habilitado == 0) checked @endif>
+                        <label class="form-check-label" for="habilitada">Deshabilitada</label>
+                    </div>
                     @if(isset($carousel))
                         <div class="form-group mt-4">
                             <button type="submit" class="btn btn-primary">Editar Carousel</button>

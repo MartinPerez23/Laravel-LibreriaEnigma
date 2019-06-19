@@ -26,15 +26,15 @@ class User extends Authenticatable
     public function setUserAttribute($val){
         $this->attributes["user"] = strtoupper($val);
     }
-
+    //funcion para devolver si o no segun el habilitado
     public function getHabilitadoAttribute(){
         return $this->attributes["habilitado"] ?  "Si" : "No";
     }
-
+    //funcion para devolver si o no segun el admin
     public function getAdminAttribute(){
         return $this->attributes["admin"] ?  "Si" : "No";
     }
-
+    //funcion para tomar el array convertido en String de generos en la base de datos y devolverlo descomprimido
     public function getGeneroFavoritoAttribute($id){
         $query = DB::table('users')->where('id',$id)->first()->genero_favorito;
 

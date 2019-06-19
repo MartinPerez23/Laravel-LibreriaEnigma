@@ -10,7 +10,7 @@ class CarouselController extends Controller
 {
     public function index(carousel $carousel)
     {
-        $carousel = $carousel->paginate(10);
+        $carousel = $carousel->paginate(6);
 
         return view("panel.carousel.index")->with("carousel",$carousel);
     }
@@ -23,6 +23,7 @@ class CarouselController extends Controller
     {
         $validaciones = [
             "imagen" => "required|image",
+            "habilitado" => "required"
         ];
 
         $mensajes = [
@@ -34,6 +35,8 @@ class CarouselController extends Controller
         if($validacion->fails())
             return redirect()->back()->withErrors($validacion);
 
+
+        //busco en la base de datos el ultimo valor de id del carousel y le sumo 1 para ponerle nombre a la imagen
         $numero = $carousel->get("id")->last()->id;
         $numero = $numero + 1;
 
@@ -69,6 +72,7 @@ class CarouselController extends Controller
 
         $validaciones = [
             "imagen" => "required",
+            "habilitado" => "required"
         ];
 
         $validar = $request->validate($validaciones);
@@ -78,7 +82,6 @@ class CarouselController extends Controller
         $data = $request->except("imagen");
 
         $data["imagen"] = "storage/carousel/".$request->id.".".$request->imagen->extension();
-
 
         if(!$carousel->update($data))
             return redirect()->back()->withErrors("No se pudo editar el carousel");
@@ -95,6 +98,8 @@ class CarouselController extends Controller
         if(!$carousel)
             return redirect()->back()->withErrors("No se encuentra el carousel a eliminar");
 
+        //elimino la imagen tambien
+        unlink($carousel->imagen);
         if($carousel->delete())
             return redirect()->route("carousel.index")->with("ok","Se borró el carousel seleccionado");
 

@@ -13,7 +13,7 @@ class LibrosController extends Controller
 
     public function index(Libro $libro)
     {
-        $libros = $libro->paginate(8);
+        $libros = $libro->paginate(4);
         return view("panel.libros.index")->with("libros",$libros);
     }
 
@@ -115,7 +115,8 @@ class LibrosController extends Controller
 
         if(!$libro)
             return redirect()->back()->withErrors("No se encuentra el libro a eliminar");
-
+        //elimino la imagen tambien
+        unlink($libro->imagen);
         if($libro->delete())
             return redirect()->route("libros.index")->with("ok","Se borró el libro seleccionado");
     }
