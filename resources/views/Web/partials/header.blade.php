@@ -25,7 +25,28 @@
                     {{ $nombre }}</a>
             </li>
             @endforeach
-            <li><a href="{{ route("panel.index") }}" class="btn btn-dark btn-block">Panel</a></li>
         </ul>
+            @if (Route::has('login'))
+                <div class="top-right">
+                    @if (Auth::check())
+                        <p>{{Auth::user()->apellido}}, {{Auth::user()->nombre}}</p>
+                    {{-- boton cerrar sesion --}}
+                            <a class="btn btn-danger" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                Cerrar Sesión
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                    {{-- boton panel --}}
+                        @if(Auth::user()->admin == "Si")
+                            <a href="{{ route("panel.index") }}" class="btn btn-dark">Panel</a>
+                        @endif
+                    @else
+                        <a class=" btn btn-dark" href="{{ url('/login') }}">Iniciar sesión</a>
+                    @endif
+                </div>
+            @endif
     </div>
 </nav>

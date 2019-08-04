@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-6 ">
+            <div class="col-6 m-2">
 
             <!-- Formulario -->
 
@@ -31,6 +31,17 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" name="email" id="email" class="form-control" placeholder="usuario@gmail.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input id="password" placeholder="*******" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="password-confirm">Confirmar Contraseña</label>
+                        <input id="password-confirm" placeholder="*******" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                     </div>
 
                     <div class="form-group">

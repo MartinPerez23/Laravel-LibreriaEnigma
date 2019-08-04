@@ -12,11 +12,11 @@ class User extends Authenticatable
     use Notifiable;
     public $timestamps = true;
     protected $fillable = [
-        "nombre","apellido","comentario","email","genero_favorito","habilitado","admin"
+        "nombre","apellido","comentario","email","genero_favorito","habilitado","admin","password"
     ];
 
     protected $hidden = [
-        'contraseña', 'remember_token',
+        "password", "remember_token"
     ];
 
     public function getUserNameAttribute(){
@@ -42,5 +42,4 @@ class User extends Authenticatable
 
         return $gene;
     }
-
 }

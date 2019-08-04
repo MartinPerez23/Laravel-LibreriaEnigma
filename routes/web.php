@@ -130,3 +130,5 @@ Route::group(["prefix" => "panel"],function (){
     });
 
 });
+
+Auth::routes();
