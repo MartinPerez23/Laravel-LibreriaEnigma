@@ -41,7 +41,7 @@ Route::group(["prefix" => "panel"],function (){
     Route::get("/", [
         "as" => "panel.index",
         "uses" => "PanelController@index"
-    ]);
+    ])->middleware('auth');
 
 
     Route::group(["prefix" => "libros"],function (){

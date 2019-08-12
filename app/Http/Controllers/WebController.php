@@ -25,9 +25,10 @@ class WebController extends Controller
 
      public function galeria(libro $libro){
 
-        $libros = $libro->with("Autor", "Editorial")->get();
-        $libros= $libros->all();
-
+        $libros = $libro->where("habilitado",1,1)
+                        ->with("Autor", "Editorial")
+                        ->orderBy('updated_at',"desc")
+                        ->get();
         return view("web.galeria",compact("libros"));
     }
 

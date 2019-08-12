@@ -13,7 +13,11 @@ class LibrosController extends Controller
 
     public function index(Libro $libro)
     {
-        $libros = $libro->paginate(4);
+
+
+        $libros = $libro->orderBy('updated_at',"desc")
+                        ->paginate(4);
+
         return view("panel.libros.index")->with("libros",$libros);
     }
 
@@ -80,7 +84,7 @@ class LibrosController extends Controller
 
         $validaciones = [
             "nombre" => "required|string",
-            "imagen" => "required",
+            "imagen" => "",
             "id_autor" => "required|exists:autores,id",
             "id_editorial" => "required|exists:editoriales,id"
         ];
@@ -97,11 +101,12 @@ class LibrosController extends Controller
         if($validacion->fails())
             return redirect()->back()->withErrors($validacion);
 
-        $request->imagen->storeAs("libros",$request->nombre.".".$request->imagen->extension());
+        $data = $request->all();
 
-        $data = $request->except("imagen");
-
-        $data["imagen"] = "storage/libros/".$request->nombre.".".$request->imagen->extension();
+        if(!empty($request->imagen)){
+            $request->imagen->storeAs("libros",$request->nombre.".".$request->imagen->extension());
+            $data["imagen"] = "storage/libros/".$request->nombre.".".$request->imagen->extension();
+        }
 
         if(!$libro->update($data))
             return redirect()->back()->withErrors("No se pudo editar el libro");

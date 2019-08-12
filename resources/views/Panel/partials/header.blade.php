@@ -27,7 +27,7 @@
             @endforeach
 
 
-            <li><a href="{{ route("web.index") }}" class="btn btn-dark btn-block">Volver al Home</a></li>
+            <li><a href="{{ route("web.index") }}" class="btn btn-dark">Volver al Home</a></li>
         </ul>
         <div class="top-right">
             <p>{{Auth::user()->apellido}}, {{Auth::user()->nombre}}</p>

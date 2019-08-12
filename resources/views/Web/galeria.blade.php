@@ -7,8 +7,6 @@
 
         @foreach ($libros as $libro)
 
-            @if ($libro->habilitado == "Si")
-
                 <div class="col-12 col-md-3 my-3">
                     <div class="card-deck">
                         <div class="card border-default colortarjetas">
@@ -29,7 +27,6 @@
                     </div>
                 </div>
 
-            @endif
         @endforeach
 
     </div>
