@@ -2,6 +2,10 @@
 
 @section("contenido")
 
+    <!-- carousel 3d-->
+
+
+
     <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 
         <ol class="carousel-indicators">
@@ -77,5 +81,7 @@
             </div>
         </div>
 
+
     </div>
+
 @endsection
