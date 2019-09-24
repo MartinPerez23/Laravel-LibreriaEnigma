@@ -9,12 +9,10 @@
         <div id="spin-container">
             <!-- Add your images (or video) here -->
             @for($i = 0; $i < 8; $i++)
-                @if($libros[$i]->habilitado == "Si")
-                    <a class="fancy_box" rel="carousel_3D" href="{{$libros[$i]->imagen}}">
-                        <img class="d-block w-100" src="{{$libros[$i]->imagen}}" alt="{{$libros[$i]->id}}">
-                    </a>
-            @endif
-        @endfor
+                <a class="fancy_box" rel="carousel_3D" href="{{$libros[$i]->imagen}}">
+                    <img class="d-block w-100" src="{{$libros[$i]->imagen}}" alt="{{$libros[$i]->id}}">
+                </a>
+            @endfor
 
 
         <!-- Example image with link -->

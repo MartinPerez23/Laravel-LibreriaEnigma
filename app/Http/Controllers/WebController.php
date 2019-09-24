@@ -13,7 +13,9 @@ class WebController extends Controller
 {
 
     public function index(carousel $carousel){
-        $carousel = $carousel->all();
+        $carousel = $carousel->where("habilitado",1,1)
+            ->orderBy('updated_at',"desc")
+            ->get();
         return view("web.index", compact("carousel"));
     }
 
